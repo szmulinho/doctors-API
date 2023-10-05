@@ -18,6 +18,13 @@ type Response struct {
 	Data string `json:"data"`
 }
 
+type Doctor struct {
+	ID       int64  `gorm:"primaryKey;autoIncrement"`
+	Login    string `gorm:"unique" json:"login"`
+	Password string `json:"password"`
+	Role     string `json:"role"`
+}
+
 type User struct {
 	ID       int64  `gorm:"primaryKey;autoIncrement"`
 	Login    string `gorm:"unique" json:"login"`
@@ -32,6 +39,6 @@ type JwtUser struct {
 }
 
 type LoginResponse struct {
-	User  User   `json:"user"`
-	Token string `json:"token"`
+	Doctor Doctor `json:"doctor"`
+	Token  string `json:"token"`
 }

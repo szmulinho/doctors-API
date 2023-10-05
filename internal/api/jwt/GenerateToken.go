@@ -8,9 +8,9 @@ import (
 	"time"
 )
 
-func GenerateToken(w http.ResponseWriter, r *http.Request, userID int64, isDoctor bool) (string, error) {
+func GenerateToken(w http.ResponseWriter, r *http.Request, ID int64, isDoctor bool) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-		"userID":   userID,
+		"doctorID": ID,
 		"isDoctor": isDoctor,
 		"exp":      time.Now().Add(time.Hour * time.Duration(1)).Unix(),
 	})

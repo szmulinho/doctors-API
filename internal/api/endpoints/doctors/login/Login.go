@@ -21,14 +21,14 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var user model.User
-	result := database.DB.Where("login = ?", credentials.Login).First(&user)
+	var doctor model.Doctor
+	result := database.DB.Where("login = ?", credentials.Login).First(&doctor)
 	if result.Error != nil {
 		http.Error(w, "Invalid login or password", http.StatusUnauthorized)
 		return
 	}
 
-	err = bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(credentials.Password))
+	err = bcrypt.CompareHashAndPassword([]byte(doctor.Password), []byte(credentials.Password))
 	if err != nil {
 		http.Error(w, "Invalid login or password", http.StatusUnauthorized)
 		return
@@ -36,19 +36,19 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	var isDoctor bool
 
-	if user.Role == "doctor" {
+	if doctor.Role == "doctor" {
 		isDoctor = true
 	}
 
-	token, err := jwt.GenerateToken(w, r, user.ID, isDoctor)
+	token, err := jwt.GenerateToken(w, r, doctor.ID, isDoctor)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
 	response := model.LoginResponse{
-		User:  user,
-		Token: token,
+		Doctor: doctor,
+		Token:  token,
 	}
 
 	responseJSON, err := json.Marshal(response)

@@ -7,12 +7,12 @@ import (
 	"net/http"
 )
 
-func GetAllUsers(w http.ResponseWriter, r *http.Request) {
-	var Users []model.User
-	if err := database.DB.Find(&Users).Error; err != nil {
+func GetAllDoctor(w http.ResponseWriter, r *http.Request) {
+	var Doctors []model.Doctor
+	if err := database.DB.Find(&Doctors).Error; err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	json.NewEncoder(w).Encode(Users)
+	json.NewEncoder(w).Encode(Doctors)
 }

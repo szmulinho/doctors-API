@@ -1,7 +1,7 @@
 package database
 
 import (
-	"github.com/szmulinho/users/internal/model"
+	"github.com/szmulinho/doctors/internal/model"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -18,7 +18,7 @@ func Connect() *gorm.DB {
 
 	DB = connection
 
-	connection.AutoMigrate(&model.User{})
+	connection.AutoMigrate(&model.Doctor{})
 
 	return connection
 }

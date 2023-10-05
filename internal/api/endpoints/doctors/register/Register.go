@@ -10,31 +10,31 @@ import (
 )
 
 func CreateDoctor(w http.ResponseWriter, r *http.Request) {
-	var newUser model.User
+	var newDoctor model.Doctor
 
-	err := json.NewDecoder(r.Body).Decode(&newUser)
+	err := json.NewDecoder(r.Body).Decode(&newDoctor)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(newUser.Password), bcrypt.DefaultCost)
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(newDoctor.Password), bcrypt.DefaultCost)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	newUser.Password = string(hashedPassword)
+	newDoctor.Password = string(hashedPassword)
 
-	newUser.Role = "doctor"
+	newDoctor.Role = "doctor"
 
-	result := database.DB.Create(&newUser)
+	result := database.DB.Create(&newDoctor)
 	if result.Error != nil {
 		http.Error(w, result.Error.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	userJSON, err := json.Marshal(newUser)
+	doctorJSON, err := json.Marshal(newDoctor)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -42,5 +42,5 @@ func CreateDoctor(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	w.Write(userJSON)
+	w.Write(doctorJSON)
 }

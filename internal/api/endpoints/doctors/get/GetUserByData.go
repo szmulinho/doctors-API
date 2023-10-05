@@ -1,4 +1,4 @@
-package userData
+package get
 
 import (
 	"encoding/json"
@@ -11,17 +11,17 @@ import (
 	"strings"
 )
 
-func GetUserDataHandler(w http.ResponseWriter, r *http.Request) {
+func GetDoctorDataHandler(w http.ResponseWriter, r *http.Request) {
 	token := r.Header.Get("Authorization")
 
-	user, err := getUserFromToken(token)
+	doctor, err := getDoctorFromToken(token)
 	if err != nil {
 		log.Println(err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
 
-	response, err := json.Marshal(user)
+	response, err := json.Marshal(doctor)
 	if err != nil {
 		log.Println(err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
@@ -33,7 +33,7 @@ func GetUserDataHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(response)
 }
 
-func getUserFromToken(tokenString string) (*model.User, error) {
+func getDoctorFromToken(tokenString string) (*model.Doctor, error) {
 	tokenString = strings.Replace(tokenString, "Bearer ", "", 1)
 
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
@@ -53,12 +53,12 @@ func getUserFromToken(tokenString string) (*model.User, error) {
 		return nil, errors.New("Invalid token claims")
 	}
 
-	userID := int64(claims["userID"].(float64))
+	doctorID := int64(claims["doctorID"].(float64))
 
-	var user model.User
-	if err := database.DB.First(&user, userID).Error; err != nil {
+	var doctor model.Doctor
+	if err := database.DB.First(&doctor, doctorID).Error; err != nil {
 		return nil, err
 	}
 
-	return &user, nil
+	return &doctor, nil
 }
