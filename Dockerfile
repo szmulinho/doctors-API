@@ -1,16 +1,17 @@
+FROM golang:1.21.1-alpine AS build
 
-FROM golang:alpine AS build
+WORKDIR /doctors
+COPY . .
 
-WORKDIR /app
-
-COPY go.mod go.sum ./
+RUN apk add --no-cache git
 RUN go mod download
+RUN CGO_ENABLED=0 GOOS=linux go build -o doctors
 
-COPY *.go ./
+FROM alpine:latest
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gs-ping
+WORKDIR /doctors
+COPY --from=build /doctors/doctors /doctors/doctors
 
-EXPOSE 8090
+EXPOSE 8095
 
-# Run
-CMD ["/docker-gs-ping"]
+CMD ["./doctors"]
