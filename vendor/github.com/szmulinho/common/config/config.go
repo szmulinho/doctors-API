@@ -1,6 +1,9 @@
 package config
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 type StorageConfig struct {
 	Host     string `json:"host"`
@@ -12,5 +15,7 @@ type StorageConfig struct {
 }
 
 func (c StorageConfig) ConnectionString() string {
-	return fmt.Sprintf("host=%spostgres user=%spostgres password=%sL96a1prosniper dbname=%spostgres port=%s5432 sslmode=%sdisable", c.Host, c.User, c.Password, c.Dbname, c.Port, c.Sslmode)
+	return fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
+		os.Getenv("DB_HOST"), os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"),
+		os.Getenv("DB_NAME"), os.Getenv("DB_PORT"), os.Getenv("DB_SSL_MODE"))
 }
