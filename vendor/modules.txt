@@ -36,11 +36,11 @@ github.com/jinzhu/inflection
 # github.com/jinzhu/now v1.1.5
 ## explicit; go 1.12
 github.com/jinzhu/now
-# github.com/szmulinho/common v0.0.0-20231011091102-24fd6a177d86
+# github.com/szmulinho/common v0.0.0-20231011184021-13651b6ed42b
 ## explicit; go 1.21.1
+github.com/szmulinho/common/config
 github.com/szmulinho/common/database
-github.com/szmulinho/common/internal/config
-github.com/szmulinho/common/internal/model
+github.com/szmulinho/common/model
 github.com/szmulinho/common/utils
 # golang.org/x/crypto v0.13.0
 ## explicit; go 1.17

@@ -9,7 +9,6 @@ type StorageConfig struct {
 	Dbname   string `json:"dbname"`
 	Port     string `json:"port"`
 	Sslmode  string `json:"sslmode"`
-	TimeZone string `json:"timeZone"`
 }
 
 func (c StorageConfig) ConnectionString() string {
