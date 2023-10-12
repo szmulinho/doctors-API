@@ -2,8 +2,15 @@ package config
 
 import (
 	"fmt"
+	"github.com/joho/godotenv"
 	"os"
 )
+
+func init() {
+	if err := godotenv.Load(); err != nil {
+		fmt.Println("Error loading .env file")
+	}
+}
 
 type StorageConfig struct {
 	Host     string `json:"host"`

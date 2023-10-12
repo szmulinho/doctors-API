@@ -10,22 +10,20 @@ import (
 
 func Connect() (*gorm.DB, error) {
 	connectionString := config.StorageConfig{}.ConnectionString()
-	conn := postgres.Open(connectionString)
-	db, err := gorm.Open(conn, &gorm.Config{})
 
+	db, err := gorm.Open(postgres.Open(connectionString), &gorm.Config{})
 	if err != nil {
 		return nil, err
 	}
 
-	err = db.AutoMigrate(
+	if err := db.AutoMigrate(
 		&model.Doctor{},
 		&model.Opinion{},
 		&model.User{},
 		&model.Prescription{},
 		&model.Drug{},
 		&model.Order{},
-	)
-	if err != nil {
+	); err != nil {
 		return nil, err
 	}
 
