@@ -30,6 +30,8 @@ github.com/stretchr/testify v1.8.1 h1:w7B6lhMri9wdJUVmEZPGGhZzrYTPvgJArz7wNPgYKs
 github.com/stretchr/testify v1.8.1/go.mod h1:w2LPCIKwWwSfY2zedu0+kehJoqGctiVI29o6fzry7u4=
 github.com/szmulinho/common v0.0.0-20231012123959-a62ad2362c7c h1:KJ2PGk2fANaqbVCsMDhJz/lD+9ETUFJIrNR0f3sFO+o=
 github.com/szmulinho/common v0.0.0-20231012123959-a62ad2362c7c/go.mod h1:k3720SOabAdy8A6nkh4Ph/jTO3pn9UgpoXLLSriJ5S4=
+github.com/szmulinho/common v0.0.0-20231013103923-19b8d6b76e7c h1:CfbIow5RJjdMRY383KsXzDKLRUlfPChA51OIJ+6Ree0=
+github.com/szmulinho/common v0.0.0-20231013103923-19b8d6b76e7c/go.mod h1:ZROmcvG4o9MiHY8OPknv8zUf/NvBDSM5G6Tgno8kCrY=
 golang.org/x/crypto v0.13.0 h1:mvySKfSWJ+UKUii46M40LOvyWfN0s2U+46/jDd0e6Ck=
 golang.org/x/crypto v0.13.0/go.mod h1:y6Z2r+Rw4iayiXXAIxJIDAJ1zMW4yaTpebo8fPOliYc=
 golang.org/x/text v0.13.0 h1:ablQoSUd0tRdKxZewP80B+BaqeKJuVhuRxj/dkrun3k=
