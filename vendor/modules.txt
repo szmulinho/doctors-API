@@ -36,7 +36,7 @@ github.com/jinzhu/inflection
 # github.com/jinzhu/now v1.1.5
 ## explicit; go 1.12
 github.com/jinzhu/now
-# github.com/szmulinho/common v0.0.0-20231013103923-19b8d6b76e7c
+# github.com/szmulinho/common v0.0.0-20231013110352-35b54400d5e8
 ## explicit; go 1.21.1
 github.com/szmulinho/common/config
 github.com/szmulinho/common/database

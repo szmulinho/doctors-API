@@ -6,7 +6,7 @@ require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
-	github.com/szmulinho/common v0.0.0-20231013103923-19b8d6b76e7c
+	github.com/szmulinho/common v0.0.0-20231013110352-35b54400d5e8
 	golang.org/x/crypto v0.13.0
 	gorm.io/gorm v1.25.5
 )
