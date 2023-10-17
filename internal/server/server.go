@@ -9,6 +9,7 @@ import (
 	"gorm.io/gorm"
 	"log"
 	"net/http"
+	"os"
 )
 
 func Run(ctx context.Context, db *gorm.DB) {
@@ -38,7 +39,11 @@ func Run(ctx context.Context, db *gorm.DB) {
 		handlers.MaxAge(86400),
 	)
 	go func() {
-		err := http.ListenAndServe(fmt.Sprintf(":%s", "8085"), cors(router))
+		port := os.Getenv("PORT")
+		if port == "" {
+			port = "8085"
+		}
+		err := http.ListenAndServe(":"+port, cors(router))
 		if err != nil {
 			log.Fatal(err)
 		}
