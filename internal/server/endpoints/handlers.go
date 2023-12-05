@@ -13,7 +13,6 @@ type Handlers interface {
 	Login(w http.ResponseWriter, r *http.Request)
 	RegisterDoctor(w http.ResponseWriter, r *http.Request)
 	GenerateToken(w http.ResponseWriter, r *http.Request, ID int64, isDoctor bool) (string, error)
-	ValidateMiddleware(next http.HandlerFunc) http.HandlerFunc
 }
 
 type handlers struct {

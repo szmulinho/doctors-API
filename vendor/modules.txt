@@ -1,3 +1,6 @@
+# github.com/davecgh/go-spew v1.1.1
+## explicit
+github.com/davecgh/go-spew/spew
 # github.com/felixge/httpsnoop v1.0.1
 ## explicit; go 1.13
 github.com/felixge/httpsnoop
@@ -39,6 +42,19 @@ github.com/jinzhu/now
 # github.com/joho/godotenv v1.5.1
 ## explicit; go 1.12
 github.com/joho/godotenv
+# github.com/kr/text v0.2.0
+## explicit
+# github.com/mattn/go-sqlite3 v1.14.17
+## explicit; go 1.16
+github.com/mattn/go-sqlite3
+# github.com/pmezard/go-difflib v1.0.0
+## explicit
+github.com/pmezard/go-difflib/difflib
+# github.com/rogpeppe/go-internal v1.11.0
+## explicit; go 1.19
+# github.com/stretchr/testify v1.8.1
+## explicit; go 1.13
+github.com/stretchr/testify/assert
 # github.com/szmulinho/common v0.0.0-20231013130355-af30704a82f7
 ## explicit; go 1.21.1
 github.com/szmulinho/common/utils
@@ -62,9 +78,15 @@ golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
 golang.org/x/text/unicode/norm
 golang.org/x/text/width
+# gopkg.in/yaml.v3 v3.0.1
+## explicit
+gopkg.in/yaml.v3
 # gorm.io/driver/postgres v1.5.3
 ## explicit; go 1.18
 gorm.io/driver/postgres
+# gorm.io/driver/sqlite v1.5.4
+## explicit; go 1.20
+gorm.io/driver/sqlite
 # gorm.io/gorm v1.25.5
 ## explicit; go 1.18
 gorm.io/gorm

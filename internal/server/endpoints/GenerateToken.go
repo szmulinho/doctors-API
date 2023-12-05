@@ -19,9 +19,11 @@ func (h *handlers) GenerateToken(w http.ResponseWriter, r *http.Request, ID int6
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return "", err
-	} else {
-		fmt.Println("token generated")
 	}
+
+	w.Header().Set("Content-Type", "application/jwt")
+
+	fmt.Println("token generated")
 
 	return tokenString, nil
 }
