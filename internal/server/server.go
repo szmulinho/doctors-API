@@ -26,7 +26,6 @@ func Run(ctx context.Context, db *gorm.DB) {
 	}).Methods("POST")
 	router.HandleFunc("/login", handler.Login).Methods("POST")
 	router.HandleFunc("/register", handler.RegisterDoctor).Methods("POST")
-	router.HandleFunc("/user", handler.GetDoctorDataHandler).Methods("GET")
 	router.HandleFunc("/doctors", handler.GetAllDoctors).Methods("GET")
 	router.HandleFunc("/doctor", handler.GetDoctorDataHandler).Methods("GET")
 	cors := handlers.CORS(
