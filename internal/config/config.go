@@ -6,9 +6,10 @@ import (
 	"os"
 )
 
-func LoadConfigFromEnv() StorageConfig {
-	if err := godotenv.Load(); err != nil {
-		fmt.Println("Error loading .env file")
+func LoadFromEnv() StorageConfig {
+	err := godotenv.Load(".env")
+	if err != nil {
+		fmt.Printf("Error loading .env file: %v\n")
 	}
 
 	host := os.Getenv("DB_HOST")
@@ -16,14 +17,12 @@ func LoadConfigFromEnv() StorageConfig {
 	password := os.Getenv("DB_PASSWORD")
 	dbname := os.Getenv("DB_NAME")
 	port := os.Getenv("DB_PORT")
-	sslMode := os.Getenv("SSL_MODE")
 
 	fmt.Printf("Host: %s\n", host)
 	fmt.Printf("User: %s\n", user)
 	fmt.Printf("Password: %s\n", password)
 	fmt.Printf("DBName: %s\n", dbname)
 	fmt.Printf("Port: %s\n", port)
-	fmt.Printf("SSL: %s\n", sslMode)
 
 	return StorageConfig{
 		Host:     host,
@@ -31,7 +30,6 @@ func LoadConfigFromEnv() StorageConfig {
 		Password: password,
 		Dbname:   dbname,
 		Port:     port,
-		SslMode:  sslMode,
 	}
 }
 
@@ -40,13 +38,11 @@ type StorageConfig struct {
 	User     string `json:"user"`
 	Password string `json:"password"`
 	Dbname   string `json:"dbname"`
-	Port    string `json:"port"`
-	SslMode string `json:"sslmode"`
-
+	Port     string `json:"port"`
 }
 
 func (c StorageConfig) ConnectionString() string {
-	connectionString := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
-		c.Host, c.User, c.Password, c.Dbname, c.Port, c.SslMode)
+	connectionString := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s",
+		c.Host, c.User, c.Password, c.Dbname, c.Port)
 	return connectionString
 }

@@ -8,7 +8,7 @@ import (
 )
 
 func Connect() (*gorm.DB, error) {
-	conn := config.LoadConfigFromEnv()
+	conn := config.LoadFromEnv()
 	connectionString := conn.ConnectionString()
 
 	db, err := gorm.Open(postgres.Open(connectionString), &gorm.Config{})
